@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <include file="struts-default.xml"/>
+    <package name="a" extends="struts-default">
+    
+        <action name="uploadAction" class="java4s.LogingEx"> 
+        
+            <interceptor-ref name="exception" />
+			<interceptor-ref name="alias" />
+			<interceptor-ref name="servletConfig" />
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="i18n" />
+			<interceptor-ref name="chain" />
+			<interceptor-ref name="debugging" />
+			<interceptor-ref name="profiling" />
+			<interceptor-ref name="scopedModelDriven" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="fileUpload">
+			<param name="maximumSize">10240000</param>
+			<param name="allowedTypes">image/jpg,image/png,image/pjpeg</param>
+			</interceptor-ref>
+			<interceptor-ref name="checkbox" />
+			<interceptor-ref name="staticParams" />
+			<interceptor-ref name="actionMappingParams" />
+			<interceptor-ref name="params">
+			<param name="excludeParams"> dojo\..*,^struts\..*</param>
+			</interceptor-ref>
+			<interceptor-ref name="conversionError" />
+			<interceptor-ref name="validation">
+			<param name="excludeMethods"> input,back,cancel,browse</param>
+			</interceptor-ref>
+			<interceptor-ref name="workflow">
+			<param name="excludeMethods"> input,back,cancel,browse</param>
+			</interceptor-ref>
+           
+            <result name="success">/Login.jsp</result>
+            <result name="input">/index.jsp</result>
+        </action>
+        <action name="uploadUserpic" class="java4s.imupload"> 
+        
+            <interceptor-ref name="exception" />
+			<interceptor-ref name="alias" />
+			<interceptor-ref name="servletConfig" />
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="i18n" />
+			<interceptor-ref name="chain" />
+			<interceptor-ref name="debugging" />
+			<interceptor-ref name="profiling" />
+			<interceptor-ref name="scopedModelDriven" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="fileUpload">
+			<param name="maximumSize">1024000</param>
+			<param name="allowedTypes">image/jpg,image/png,image/pjpeg</param>
+			</interceptor-ref>
+			<interceptor-ref name="checkbox" />
+			<interceptor-ref name="staticParams" />
+			<interceptor-ref name="actionMappingParams" />
+			<interceptor-ref name="params">
+			<param name="excludeParams"> dojo\..*,^struts\..*</param>
+			</interceptor-ref>
+			<interceptor-ref name="conversionError" />
+			<interceptor-ref name="validation">
+			<param name="excludeMethods"> input,back,cancel,browse</param>
+			</interceptor-ref>
+			<interceptor-ref name="workflow">
+			<param name="excludeMethods"> input,back,cancel,browse</param>
+			</interceptor-ref>
+           
+            <result name="success">/uploadImage.jsp</result>
+            <result name="input">/uploadImage.jsp</result>
+            
+        </action>
+        
+         <action name="UserHomeAction" class="java4s.LogingEx"> 
+        
+            <interceptor-ref name="exception" />
+			<interceptor-ref name="alias" />
+			<interceptor-ref name="servletConfig" />
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="i18n" />
+			<interceptor-ref name="chain" />
+			<interceptor-ref name="debugging" />
+			<interceptor-ref name="profiling" />
+			<interceptor-ref name="scopedModelDriven" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="fileUpload">
+			<param name="maximumSize">10240</param>
+			<param name="allowedTypes">image/jpg,image/png,image/pjpeg</param>
+			</interceptor-ref>
+			<interceptor-ref name="checkbox" />
+			<interceptor-ref name="staticParams" />
+			<interceptor-ref name="actionMappingParams" />
+			<interceptor-ref name="params">
+			<param name="excludeParams"> dojo\..*,^struts\..*</param>
+			</interceptor-ref>
+			<interceptor-ref name="conversionError" />
+			<interceptor-ref name="validation">
+			<param name="excludeMethods"> input,back,cancel,browse</param>
+			</interceptor-ref>
+			<interceptor-ref name="workflow">
+			<param name="excludeMethods"> input,back,cancel,browse</param>
+			</interceptor-ref>
+           
+            <result name="success">/index.jsp</result>
+            <result name="input">/index.jsp</result>
+        </action>
+        
+        <action name="LoginCheck" class="java4s.LoginAction">
+        <result name="success">/User_home.jsp</result>
+        <result name="error">/Login.jsp</result>
+        </action>
+        
+        <action name="searchUser" class="java4s.userSearch">
+        <result name="success">/Search_user.jsp</result>
+        <result name="error">/success.jsp</result>
+        </action>   
+          <action name="uhomeAction" class="java4s.UserHomeAction">
+        <result name="success">/User_home.jsp</result>
+         </action>   
+    
+<action name="login">
+<result >login.jsp</result>
+</action>
+
+<action name="loginprocess" class="com.javatpoint.Login">
+<result name="success"  >loginsuccess.jsp</result>
+<result name="error" >loginerror.jsp</result>
+</action>
+
+<action name="logout" class="com.javatpoint.Login" method="logout">
+<result name="success" >logoutsuccess.jsp</result>
+</action>
+
+<action name="profile" class="com.javatpoint.Profile">
+<result name="success" >profilesuccess.jsp</result>
+<result name="error" >profileerror.jsp</result>
+</action>
+      <action name="SearchuserPro" class="java4s.searchprof">
+      <result name="success">/SearchUserpro.jsp</result>
+      </action>
+      <action name="sendRequest" class="java4s.searchprof" method="sendReq">
+      <result name="success">/SearchUserPro.jsp</result>
+      
+      </action>
+  <action name="Frequests" class="java4s.freq">
+   <result name="success">/frequests.jsp</result>
+   <result name="nothing" type="chain">HomePage</result>
+  </action>  
+    
+  <action name="HomePage" class="java4s.LoginAction" method="selectimage">
+        <result name="success">/User_home.jsp</result>
+        <result name="error">/Login.jsp</result>
+        </action>
+        <action name="FriendsImage" class="java4s.friendsimage">
+        <result name="success">/Snaps of friends.jsp</result>
+        
+        </action>
+        <action name="rateP" class="java4s.ratepics">
+        <result name="success" type="chain">FriendsImage</result>
+        
+        </action>
+    </package>
+</struts>
